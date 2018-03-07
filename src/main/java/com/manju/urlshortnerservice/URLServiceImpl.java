@@ -14,7 +14,8 @@ public class URLServiceImpl implements URLService {
 
 	@Autowired
 	URLRepository urlRepository;
-	UrlValidator urlvalidator = new UrlValidator();
+	@Autowired
+	UrlValidator urlvalidator;
 	
 	 public String getShortURL(RequestResource reqr) {
 			 if(urlvalidator.isValid(reqr.getOriginalURL())) {
@@ -32,11 +33,6 @@ public class URLServiceImpl implements URLService {
 			 } else {
 				 return "Please provide valid URL";
 			 }
-		 
-		 
-		 
-		 
-		 
 	 }
 
 	@Override
