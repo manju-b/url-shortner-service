@@ -2,7 +2,7 @@ package com.manju.urlshortnerservice;
 
 public class RequestResource {
 
-	String originalURL;
+	private String originalURL;
 
 	public String getOriginalURL() {
 		return originalURL;

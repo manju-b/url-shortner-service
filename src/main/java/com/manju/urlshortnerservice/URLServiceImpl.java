@@ -19,9 +19,9 @@ public class URLServiceImpl implements URLService {
 	
 	 public String getShortURL(RequestResource reqr) {
 			 if(urlvalidator.isValid(reqr.getOriginalURL())) {
-				 if(urlRepository.findOne(reqr.getOriginalURL()) != null){
-					 URL url = urlRepository.findOne(reqr.getOriginalURL());
-					 return url.getShortenURL();
+				 if(urlRepository.findOneByOriginalURL(reqr.getOriginalURL()) != null){
+					 URL url = urlRepository.findOneByOriginalURL(reqr.getOriginalURL());
+					 return "http://localhost:8080/"+url.getShortenURL();
 				 } else {
 					 URL url = new URL();
 					 url.setOriginalURL(reqr.getOriginalURL());
@@ -31,7 +31,7 @@ public class URLServiceImpl implements URLService {
 					 return "http://localhost:8080/"+url.getShortenURL();
 				 }
 			 } else {
-				 return "Please provide valid URL";
+				 throw new IllegalArgumentException("Please provide valid URL");
 			 }
 	 }
 
